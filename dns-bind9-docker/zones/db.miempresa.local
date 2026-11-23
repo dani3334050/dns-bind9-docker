@@ -1,0 +1,26 @@
+$TTL    604800
+@       IN      SOA     ns1.miempresa.local. admin.miempresa.local. (
+                              2026112301 ; Serial (YYYYMMDDNN)
+                              604800     ; Refresh
+                              86400      ; Retry
+                              2419200    ; Expire
+                              604800 )   ; Negative Cache TTL
+
+; Servidor de nombres
+@       IN      NS      ns1.miempresa.local.
+
+; Registros A (IPv4)
+ns1     IN      A       127.0.0.1
+@       IN      A       192.168.1.10
+app     IN      A       192.168.1.20
+api     IN      A       192.168.1.21
+mail    IN      A       192.168.1.40
+
+; Registro CNAME (Alias)
+www     IN      CNAME   app.miempresa.local.
+
+; Registro MX (Correo)
+@       IN      MX 10   mail.miempresa.local.
+
+; Registro TXT
+@       IN      TXT     "v=spf1 mx -all"

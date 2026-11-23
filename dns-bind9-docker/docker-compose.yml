@@ -1,0 +1,14 @@
+services:
+  bind9:
+    image: ubuntu/bind9:latest
+    container_name: dns-autoritativo
+    environment:
+      - BIND9_USER=bind
+      - TZ=America/La_Paz
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./config/named.conf:/etc/bind/named.conf:ro
+      - ./zones:/etc/bind/zones:ro
+    restart: unless-stopped
